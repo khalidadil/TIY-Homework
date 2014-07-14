@@ -1,0 +1,212 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    margin:0px;
+    padding: 0px;
+    font-family: 'Futura-CondensedMedium', "Trebuchet MS", Arial, sans-serif;
+}
+li{
+    list-style: none;
+}
+h1{
+    font-size:55px;
+    font-family: 'Futura-CondensedExtraBold', "Trebuchet MS", Arial, sans-serif;
+    letter-spacing: -2px;
+    line-height: 90%;
+}
+h2{
+    font-size:16px;
+    font-family: 'Futura-CondensedExtraBold', "Trebuchet MS", Arial, sans-serif;
+    color: #5bb31e;
+}
+.header{
+    width: 100%;
+    height: 62px;
+    background-color: #18191b;
+    position: relative;
+    font-size: 0px;
+}
+.tagline{
+    display: inline-block;
+    width: 50%;
+    font-size: 1rem;
+    position: absolute;
+    top: 20px;
+    left: 27px;
+}
+.tagline .logo{
+    background: url(../img/logo.jpg) no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 20px;
+    display: inline-block;
+    float: left;
+}
+.tagline p{
+    position: absolute;
+    left: 110px;
+    top: 2px;
+    color: #fff;
+/*    font-family: 'Futura-CondensedMedium', "Trebuchet MS", Arial, sans-serif;
+*/}
+.tagline span{
+    color: #747474;
+}
+.menu {
+    display: inline-block;
+    width: 50%;
+    height: 62px;
+    font-size: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    text-align: right;
+    font-family: 'Futura-CondensedExtraBold', "Trebuchet MS", Arial, sans-serif;
+    letter-spacing: 1px;
+}
+.menu li{
+    display: inline-block;
+    font-size: 1rem;
+    height: 100%;
+    padding: 0px 42px;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    padding-top: 22px;
+    color: #fff;
+}
+.personalize{
+    width: 490px;
+    height: 167px;
+    margin-top: 43px;
+    background: #00f000;
+    position:absolute;
+    right: 0px;
+}
+.avi{
+    width: 170px;
+    height:100%;
+    display: inline-block;
+    background: #f00;
+    float:left;
+}
+.updates{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 180px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 50%;
+    height: 70px;
+    background: #f00;
+    letter-spacing: -1px;
+    font-size: 0.9em;
+}
+.alerts{
+    background: #0ff;
+    width: 120px;
+    height: 55px;
+    position: absolute;
+    right: 0px;
+    top: 67px;
+}
+.leftside{
+    background: #0000ee;
+    width: 63%;
+    height: 700px;
+    display:inline-block;
+    margin-top: 43px;
+    padding-left: 40px;
+}
+.products{
+    background: #d5ffc7;
+    width: 100%;
+    height: 500px;
+    padding-top: 12px;
+}
+ul>.body li{
+    display: inline-block;
+    width: 33%;
+    font-size: 0px;
+}
+.body ul li ul{
+    font-size: 1rem;
+}
+.recommend {
+    background: #0b0;
+    width: 100%;
+    height: 130px;
+    margin-top: 60px;
+}
+.rightside{
+    background: #ee00ee;
+    width: 28%;
+    height: 520px;
+    display:inline-block;
+    position: absolute;
+    right: 0px;
+    top: 290px;
+}
+.news{
+    background: #aab00b;
+    width: 100%;
+    height: 365px;
+}
+.news .news_img{
+    background: #fff;
+    width: 55%;
+    height: 100%;
+    float:left;
+    display:inline-block;
+}
+.news li{
+    margin-top: 17px;
+    width: 100%;
+    height: 30%;
+}
+.news li:first-child{
+    margin-top: 0px;
+}
+.news .news_text{
+    display:inline-block;
+    width: 30%;
+}
+.favorites{
+    margin-top: 50px;
+    background: #aab00b;
+    width: 100%;
+    height: 100px;
+}
+/**
+ * CSS for arrow
+ */
+
+.arrow:before, .arrow:after {
+    border-right: 2px solid;
+    content: '';
+    display: block;
+    height: 8px;
+    margin-top: -6px;
+    position: absolute;
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    right: 10px;
+    top: 50%;
+    width: 0;
+}
+
+.arrow:after {
+    margin-top: -1px;
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.arrow:hover:before, .arrow:hover:after,
+.arrow:focus:before, .arrow:focus:after {
+    color: #000;
+}

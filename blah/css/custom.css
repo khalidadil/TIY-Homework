@@ -1,0 +1,146 @@
+.next_arrow{
+	width: 30px;
+	height: 30px;
+	background: skyblue;
+	border-radius: 10px;
+}
+.prev_arrow{
+	width: 30px;
+	height: 30px;
+	background: pink;
+	border-radius: 10px;
+}
+
+ *, *:after, *:before {
+    box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+
+}
+.main{
+  overflow: hidden;
+}
+.main img{
+  /*width: 680px;*/
+  width: 100%;
+}
+.card{
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 680px;
+  height: 680px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+}
+.main{
+  width: 680px;
+  height: 530px;
+  position: relative;
+  background-color: HSLA(199, 74%, 39%, .5);
+}
+.info{
+  width: 680px;
+  height: 150px;
+  background-color: #F2F2F2;
+  font-size: 0;
+}
+.general{
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+}
+.general p {
+  color: grey;
+  padding: 10px;
+  font-size: 2rem;
+  line-height: .5rem;
+}  
+.followers{
+  margin-left: 32px;
+  margin-right: 7px;
+}
+.followers, .following{
+	width: 22%;
+  height: 100%;
+  background-color: lightgrey;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+.followers p, .following p{
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+.numberFollow{
+  color: #44B3E8;
+  font-size: 5rem;
+  text-align: center;
+}
+.button{
+  width: 140px;
+  height: 40px;
+  background-color: #44B3E8;
+  border: 4px solid #1A81AF;
+  border-radius: 5px;
+  left: 20px;
+  position: absolute;
+  bottom: 80px;
+}
+.button p{
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 5px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%
+}
+.name{
+  position: absolute;
+  bottom: 0px;
+  left: 20px; 
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  font-size: 2rem;
+  
+}
+.email{
+  position: absolute;
+  bottom: 40px;
+  right: 20px; 
+  display: inline-block;
+  vertical-align: top;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+}
+.triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-left: 50px solid white;
+	border-bottom: 50px solid transparent;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+}
+.triangle-left {
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-right: 50px solid white;
+	border-bottom: 50px solid transparent;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  -webkit-transform: translateY(-50%);
+}

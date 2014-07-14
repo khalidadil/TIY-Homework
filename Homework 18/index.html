@@ -1,0 +1,33 @@
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+
+  <script type="orange" id="html_template">
+    <div class='card'>
+      <img class="avi" src="<%= avatar_url %>">
+      <div class='top'></div>
+
+      <div class='social'>
+        <a href='https://twitter.com/khalidadil_' target="blank_"><img src="https://cdn1.iconfinder.com/data/icons/simple-icons/4096/twitter-4096-black.png"></a>
+        <a href='https://www.linkedin.com/in/khalidadil' target="blank_"><img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-linkedin-256.png"></a>
+        <a href='<%= html_url %>' target="blank_"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-256.png"></a>
+      </div>
+      
+      <a href='http://en.wikipedia.org/wiki/Houston' target="blank_"><div class='location'><p><i class="fa fa-location-arrow"></i> <%= location %></p></div></a>
+      
+      <div class='info'>
+        <div class='name'><%= name %></div>
+        <div class='description'><%= company %></div>
+        <div class='website'><a href='<%= blog %>' target="_blank"><%= blog %></a></div>
+      </div>
+    </div>
+  </script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="js/code.js"></script>
+</body>

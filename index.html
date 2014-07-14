@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/typeplate.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+
+<body>
+    <script type="orange" id="mytemplate">
+    <div class="card">
+        <div class="main">
+            <img src="<%= avatar_url %>">
+            <div id="triangle-left"></div>
+            <div id="triangle-right"></div>
+            <a href="<%= email %>" target="_blank">
+                <div class="button">
+                    <p>follow</p>
+                </div>
+            </a>
+            <div class="name">
+                <p>
+                    <%= name %>
+                </p>
+            </div>
+            <div class="email"></div>
+        </div>
+        <div class="info">
+            <div class="general">
+                <p>Ready to work!
+                    <%=hireable %>
+                </p>
+                <p>
+                    <%=location %>
+                </p>
+            </div>
+            <div class="followers">
+                <div class="numberFollow">
+                    <%=followers %>
+                </div>
+                <p>followers</p>
+            </div>
+            <div class="following">
+                <div class="numberFollow">
+                    <%=following %>
+                </div>
+                <p>following</p>
+            </div>
+        </div>
+    </div>
+    </script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+</body>
+
+</html>
