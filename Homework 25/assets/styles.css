@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'Digital';
+    src: url('../assets/font/DS-DIGIT.TTF') format('truetype');
+}
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    background: url("http://determineduncensored.files.wordpress.com/2011/08/running_background.jpg");
+    background-size: cover;
+}
+h1 {
+    font-family: 'Digital', sans-serif;
+    margin-top: 155px;
+    font-size: 7em;
+    text-align: center;
+    transform: scale(1, 2.5);
+    -webkit-transform: scale(1, 2.5);
+}
+p {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  	font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(251, 211, 64);
+}
+.stopwatch {
+    position: fixed;
+    background: url('../img/stopwatch.png') no-repeat fixed top;
+    height: 100%;
+    width: 100%;
+}
+.buttons{
+    text-align: center;
+    position: relative;
+    width: 720px;
+    height: 200px;
+    margin: 0 auto;
+}
+.buttonStart{
+    display: inline-block;
+    transform: rotate(38deg);
+    -webkit-transform: rotate(38deg);
+    position: absolute;
+    top: 140px;
+    right: 145px;
+}
+.buttonReset{
+    display: inline-block;
+    transform: rotate(-38deg);
+    -webkit-transform: rotate(-38deg);
+    position: absolute;
+    top: 140px;
+    left: 155px;
+}
+.buttonWAT{
+    display: inline-block;
+    position: absolute;
+    top: 80px;
+    left: 322px;
+}
+.pushStart, .pushWAT, .pushReset {
+    width: 200px;
+    height: 100px;
+}
+.pushReset {
+    transform: rotate(-38deg);
+    -webkit-transform: rotate(-38deg);
+    position: absolute;
+    top: 70px;
+    left: 10px;
+}
+.pushWAT {
+    position: absolute;
+    top: 0px;
+    right: 250px;
+}
+.pushStart {
+    transform: rotate(38deg);
+    -webkit-transform: rotate(38deg);
+    position: absolute;
+    top: 70px;
+    right: -15px;
+}

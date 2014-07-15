@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>Stopwatch</title>
+    <title>Stopwatch</title>
+    <link rel="stylesheet" type="text/css" href="./assets/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./assets/styles.css">
 </head>
+
 <body>
-	<h1>00:00:00</h1>
-	<button class="start_stop">Start</button>
-	<button class="reset">Reset</button>
+	<div class="stopwatch">
+	    <div class="buttons">
+	    	<div class="pushStart"></div>
+	    	<div class="pushWAT"></div>
+	    	<div class="pushReset"></div>
+	        <div class="buttonReset">
+	            <p>Reset</p>
+	        </div>
+	        <div class="buttonWAT">
+	            <p>Mode</p>
+	        </div>
+			<div class="buttonStart">
+	            <p>Start</p>
+	        </div>
+	    </div>
+	    <h1>00:00.00</h1>
+    </div>
+    <script type="text/javascript" src="./assets/stopwatch.js"></script>
 </body>
-<script type="text/javascript" src="stopwatch.js"></script>
+
 </html>
