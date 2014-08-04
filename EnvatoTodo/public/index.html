@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Todo App Built on Parse</title>
+    <meta name="description" content="My Parse App">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+
+    <style>
+    body {
+        font-family: "HelveticaNeue-Light", sans-serif;
+        font-weight: 300;
+    }
+    h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    a {
+        text-decoration: none;
+    }
+    .hidden {
+        display: none;
+    }
+    #main {
+        text-align: center;
+    }
+    input {
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 0 10px #eee;
+        font-size: 24px;
+    }
+    #input-wrapper {
+        padding-bottom: 15px;
+    }
+    #list-item-submit {
+        background: #73D175;
+        color: white;
+        box-shadow: none;
+        border-color: #599E5A;
+    }
+    li {
+        text-align: left;
+        font-family: sans-serif;
+        list-style: none;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+        margin-left: -10px;
+    }
+    li input {
+        margin-right: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Todo List built on <a href="http://www.parse.com" alt="Parse">Parse</a>
+    </h1>
+    <div id="main">
+        <div id="input-wrapper">
+            <input type="text" id="list-input" placeholder="Enter a todo here...">
+            <input type="button" id="list-item-submit" value="Add">
+        </div>
+        <div>
+            <h2>Incomplete Tasks</h2>
+            <ul id="incomplete-items">
+                <li id="no-incomplete-message">There are no incomplete tasks! Consider adding one above.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- This is a template that we'll be using to populate our list items -->
+    <script id="todo-items-template" type="x/handlebars">
+      < li class = "list-item" >
+        < input type = "checkbox" id = "{id}" > {content} 
+      </li>
+    </script>
+
+    <script>
+    //Use the YUI 'node' module.
+    //
+    var APP_ID = "lll0a5Ku5LoAERft7rLjhc0LYw56l3xlSsppc9XA";
+    var JS_KEY = "bNErPKg2P9GTJM3jwMQpCAW5h6hZxoggH5FufoQM";
+
+    YUI().use('node', function(Y) {
+
+        //Lets declare some variables that we'll be using.
+        var ListItem,
+            query,
+            noTasksMessage = Y.one('#no-incomplete-message'),
+            submitBtn = Y.one("#list-item-submit"),
+            incompleteItemList = Y.one('#incomplete-items'),
+            completeItemList = Y.one('#complete-items'),
+            input = Y.one("#list-input");
+
+        console.log(input);
+
+        Parse.initialize(APP_ID, JS_KEY);
+
+        //    _____             _                ______          __          
+        //   / ___/____ __   __(_)___  ____ _   /_  __/___  ____/ /___  _____
+        //   \__ \/ __ `/ | / / / __ \/ __ `/    / / / __ \/ __  / __ \/ ___/
+        //  ___/ / /_/ /| |/ / / / / / /_/ /    / / / /_/ / /_/ / /_/ (__  ) 
+        // /____/\__,_/ |___/_/_/ /_/\__, /    /_/  \____/\__,_/\____/____/  
+        //                          /____/                                   
+
+        submitBtn.on('click', function(e) {
+
+            //Extend the native Parse.Object class.
+            var ListItem = Parse.Object.extend("ListItem");
+
+            //Instantiate an object of the ListItem class
+            var listItem = new ListItem();
+
+            var text = Y.one('#list-input').get('value');
+
+            //listItem is now the object that we want to save, so we assign the properties that we want on it.
+            listItem.set("content", text);
+            listItem.set("isComplete", false);
+
+            //We call the save method, and pass in success and failure callback functions.
+            listItem.save(null, {
+                success: function(item) {
+                    noTasksMessage.addClass('hidden');
+                    var content = Y.Lang.sub(Y.one('#todo-items-template').getHTML(), {
+                        content: item.get('content'),
+                        id: item.id,
+                        isComplete: item.get('isComplete')
+                    });
+                    incompleteItemList.append(content);
+                    input.set('value', '').focus();
+                },
+                error: function(gameScore, error) {
+                    alert("Error when saving Todos: " + error.code + " " + error.message);
+                }
+            });
+        });
+
+        //    _____ __                  _                ______                     
+        //   / ___// /_  ____ _      __(_)___  ____ _   /  _/ /____  ____ ___  _____
+        //   \__ \/ __ \/ __ \ | /| / / / __ \/ __ `/   / // __/ _ \/ __ `__ \/ ___/
+        //  ___/ / / / / /_/ / |/ |/ / / / / / /_/ /  _/ // /_/  __/ / / / / (__  ) 
+        // /____/_/ /_/\____/|__/|__/_/_/ /_/\__, /  /___/\__/\___/_/ /_/ /_/____/  
+        //                                  /____/                                  
+
+        //Once again, we extend the Parse.Object class to make the ListItem class
+        ListItem = Parse.Object.extend("ListItem");
+
+        //This time, we use Parse.Query to generate a new query, specifically querying the ListItem table.
+        query = new Parse.Query(ListItem);
+
+        //We set constraints on the query.
+        query.equalTo('isComplete', false);
+        query.limit = 10;
+        query.descending('createdAt');
+
+        //We submit the query and pass in callback functions.
+        query.find({
+            success: function(results) {
+                if (results.length > 0) {
+                    noTasksMessage.addClass('hidden');
+                }
+                //Append each of the incomplete tasks to the Incomplete List
+                Y.Array.each(results, function(val, i, arr) {
+                    var content = Y.Lang.sub(Y.one('#todo-items-template').getHTML(), {
+                        content: val.get('content'),
+                        id: val.id,
+                        isComplete: false
+                    });
+                    console.log(content);
+                    incompleteItemList.html(content);
+                });
+
+                /* When a <li> is clicked, we want to save that item as being complete. We use 'delegate' here instead of 'on' so that we only create one event listener instead of one for each checkbox. */
+
+                //     __  ___           __      ______                      __     __           __
+                //    /  |/  /___ ______/ /__   / ____/___  ____ ___  ____  / /__  / /____  ____/ /
+                //   / /|_/ / __ `/ ___/ //_/  / /   / __ \/ __ `__ \/ __ \/ / _ \/ __/ _ \/ __  / 
+                //  / /  / / /_/ / /  / ,<    / /___/ /_/ / / / / / / /_/ / /  __/ /_/  __/ /_/ /  
+                // /_/  /_/\__,_/_/  /_/|_|   \____/\____/_/ /_/ /_/ .___/_/\___/\__/\___/\__,_/   
+                //                                                /_/                              
+
+                // 1. Get the id of the list item.
+                // 2. Query for a Parse object with that id.
+                // 3. Get the returned Parse object, and update it's isComplete property as true.
+                // 4. Save the updated object.
+                // 5. Remove it from the displayed list.
+
+                incompleteItemList.delegate('click', function(e) {
+
+                    //keep a reference to this
+                    var self = this;
+
+                    //create a Parse query object
+                    var query = new Parse.Query(ListItem);
+
+                    //The query.get() method requires the objectId as its first argument. It returns the object with that id.
+                    query.get(self.one('input').get('id'), {
+                        success: function(item) {
+
+                            //Once the object is returned, we update its property and save it.
+                            item.set('isComplete', true);
+                            item.save();
+
+                            //Since the item is no longer incomplete, we remove it from the list.
+                            self.remove();
+
+                            //If there's nothing in the list, show a message saying the list is empty. 
+                            if (incompleteItemList.all('li').size() >= 1) {
+                                noTasksMessage.removeClass('hidden');
+                            }
+
+                        },
+                        error: function(object, error) {
+                            alert("Error when updating todo item: " + error.code + " " + error.message);
+                        }
+                    });
+                }, 'li');
+            },
+            error: function(error) {
+                alert("Error when retrieving Todos: " + error.code + " " + error.message);
+            }
+        });
+
+    });
+    </script>
+</body>
+
+</html>

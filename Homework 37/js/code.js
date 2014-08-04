@@ -9,10 +9,10 @@ var EtsyListing = Backbone.Model.extend({
     },
     validate: function(attributes) {
         console.log("validate");
-    },
+    }/*,
     defaults: {
 
-    }
+    }*/
 });
 
 // var listing = new EtsyListing(); guess this doesn't need to be instatiated??
@@ -26,12 +26,12 @@ var EtsyListings = Backbone.Collection.extend({
     parse: function(resp, xhr) {
         return resp.results;
     },
-    initialize: function() {
-
-    },
     model: EtsyListing, // you will create a view and a model to show in the HTML
     api_key: "fjlg40t8hj9r07c4alcbfmoo", // put your api key here!
     query: '???'
+    /*initialize: function() {
+
+    },*/
 });
 
 var EtsyView = Backbone.View.extend({
@@ -57,10 +57,10 @@ var EtsyView = Backbone.View.extend({
                 that.$el.html(template);
             }
         });
-    },
+    }/*,
     events: {
 
-    }
+    }*/
 });
 
 var newView = new EtsyView();

@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "EnvatoTodo": {
+            "applicationId": "lll0a5Ku5LoAERft7rLjhc0LYw56l3xlSsppc9XA", 
+            "masterKey": "22CbiZyiQFKBp2VO82OshUNYP5NISJErUj3XgjrM"
+        }, 
+        "_default": {
+            "link": "EnvatoTodo"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}
